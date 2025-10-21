@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ surahData?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="surahData">
+  <ion-list>
+    <ion-item *ngFor="let verse of surahData.verses">
+      <ion-label>
+        <h3>آية {{ verse.verse }}</h3>
+        <p style="direction: rtl; text-align: right;">{{ verse.text }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-content *ngIf="!surahData">
+  <ion-spinner name="crescent"></ion-spinner>
+</ion-content>

@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AyahListPage } from './modules/ayah-list/ayah-list.component';
+import { SurahListPage } from './modules/surah-list/surah-list.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'folder/inbox',
-    pathMatch: 'full'
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  }
+  { path: '', redirectTo: 'surah-list', pathMatch: 'full' },
+  { path: 'surah-list', component: SurahListPage },
+  { path: 'ayah-list/:surahNumber', component: AyahListPage },
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
