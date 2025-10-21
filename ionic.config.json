@@ -1,0 +1,7 @@
+{
+  "name": "Telawat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
