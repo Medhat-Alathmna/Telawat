@@ -35,8 +35,8 @@ import { QuranService } from 'src/app/shared/services/quran.service';
 
     <ion-content>
       <ion-list>
-        <ion-item 
-          *ngFor="let surah of surahs()" 
+        @for (surah of surahs(); track $index) {
+           <ion-item 
           [routerLink]="['/ayah-list', surah.id]"
           button
         >
@@ -45,6 +45,8 @@ import { QuranService } from 'src/app/shared/services/quran.service';
             <p>{{ surah.transliteration }} — {{ surah.total_verses }} آية</p>
           </ion-label>
         </ion-item>
+        }
+       
       </ion-list>
     </ion-content>
   `
@@ -54,6 +56,5 @@ export class SurahListPage {
   surahs = signal(this.quranService.getSurahs());
 
   constructor() {
-    console.log(this.surahs());
   }
 }

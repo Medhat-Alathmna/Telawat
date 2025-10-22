@@ -9,10 +9,11 @@ export class QuranService {
     return this.surahs;
   }
 
-  async getSurahByNumber(num: number) {
+   async getSurahByNumber(num: number) {
+    const id = num.toString().padStart(3, '0');
     try {
-      const surah = await import(`quran-json/dist/chapters/${num}.json`);
-      return surah.default;
+      const response = await fetch(`assets/quran/surahs/${id}.json`);
+      return await response.json();
     } catch (e) {
       console.error('Failed to load surah', e);
       return null;

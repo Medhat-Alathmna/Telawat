@@ -71,6 +71,8 @@ export class AyahListPage implements OnInit {
   async ngOnInit() {
     const num = Number(this.route.snapshot.paramMap.get('surahNumber'));
     const data = await this.quranService.getSurahByNumber(num);
+    console.log(num);
+    
     this.surah.set(data);
   }
 }

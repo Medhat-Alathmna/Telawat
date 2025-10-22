@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title style="text-align:center;">{{ surahData?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="surahData">
+  <div class="mushaf">
+    <div *ngFor="let ayah of surahData.ayat; let i = index" class="ayah">
+      <ng-container *ngIf="!ayah.words; else highlighted">
+        <span class="ayah-text">{{ ayah.text }}</span>
+        <span class="ayah-number">۝{{ ayah.index }}</span>
+      </ng-container>
+
+      <ng-template #highlighted>
+        <span
+          *ngFor="let word of ayah.words"
+          [class.highlight]="word.highlight"
+          class="ayah-word"
+        >
+          {{ word.text }}
+        </span>
+        <span class="ayah-number">۝{{ ayah.index }}</span>
+      </ng-template>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="!surahData">
+  <ion-spinner name="crescent"></ion-spinner>
+</ion-content>
